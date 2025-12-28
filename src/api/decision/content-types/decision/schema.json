@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "decisions",
+  "info": {
+    "singularName": "decision",
+    "pluralName": "decisions",
+    "displayName": "decision"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "person": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::person.person"
+    },
+    "meeting": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::meeting.meeting",
+      "inversedBy": "decisions"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

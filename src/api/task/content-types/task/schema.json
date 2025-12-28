@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tasks",
+  "info": {
+    "singularName": "task",
+    "pluralName": "tasks",
+    "displayName": "task"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "person": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::person.person"
+    },
+    "meeting": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::meeting.meeting",
+      "inversedBy": "tasks"
+    },
+    "description": {
+      "type": "text"
+    },
+    "dueDate": {
+      "type": "date"
+    },
+    "url": {
+      "type": "string"
+    },
+    "taskStatus": {
+      "type": "enumeration",
+      "required": false,
+      "default": "Open",
+      "enum": [
+        "Open",
+        "In-Progress",
+        "Completed"
+      ]
+    }
+  }
+}

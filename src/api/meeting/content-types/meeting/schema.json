@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "meetings",
+  "info": {
+    "singularName": "meeting",
+    "pluralName": "meetings",
+    "displayName": "meeting"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "description": {
+      "type": "text"
+    },
+    "decisions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::decision.decision",
+      "mappedBy": "meeting"
+    },
+    "tasks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::task.task",
+      "mappedBy": "meeting"
+    }
+  }
+}
