@@ -11,10 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "person": {
+    "people": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::person.person"
+      "relation": "manyToMany",
+      "target": "api::person.person",
+      "inversedBy": "decisions"
     },
     "meeting": {
       "type": "relation",

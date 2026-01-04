@@ -13,6 +13,24 @@
   "attributes": {
     "name": {
       "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "department": {
+      "type": "string"
+    },
+    "tasks": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::task.task",
+      "inversedBy": "people"
+    },
+    "decisions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::decision.decision",
+      "mappedBy": "people"
     }
   }
 }

@@ -452,7 +452,7 @@ export interface ApiDecisionDecision extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     meeting: Schema.Attribute.Relation<'manyToOne', 'api::meeting.meeting'>;
-    person: Schema.Attribute.Relation<'oneToOne', 'api::person.person'>;
+    people: Schema.Attribute.Relation<'manyToMany', 'api::person.person'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -503,9 +503,15 @@ export interface ApiPersonPerson extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    company: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    decisions: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::decision.decision'
+    >;
+    department: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -514,6 +520,7 @@ export interface ApiPersonPerson extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    tasks: Schema.Attribute.Relation<'manyToMany', 'api::task.task'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -540,7 +547,7 @@ export interface ApiTaskTask extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::task.task'> &
       Schema.Attribute.Private;
     meeting: Schema.Attribute.Relation<'manyToOne', 'api::meeting.meeting'>;
-    person: Schema.Attribute.Relation<'oneToOne', 'api::person.person'>;
+    people: Schema.Attribute.Relation<'manyToMany', 'api::person.person'>;
     publishedAt: Schema.Attribute.DateTime;
     taskStatus: Schema.Attribute.Enumeration<
       ['Open', 'In-Progress', 'Completed']
